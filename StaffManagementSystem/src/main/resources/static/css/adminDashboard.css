@@ -1,0 +1,150 @@
+* {
+	font-family: serif;
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+}
+
+/* ***********side---bar-----section********** */
+.sidebar {
+	position: sticky;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 110px;
+	height: 100vh;
+	padding: 0 1.7rem;
+	color: #ffffff;
+	overflow: hidden;
+	transition: all 0.5s linear;
+	background-color: #000;
+}
+
+.sidebar:hover {
+	width: 290px;
+	transition: 0.5s;
+}
+
+.logo {
+	height: 80px;
+	padding: 16px;
+}
+
+.menu {
+	height: 88%;
+	position: relative;
+	list-style: none;
+	padding: 0;
+}
+
+.menu li {
+	padding: 1rem;
+	margin: 8px 0;
+	border-radius: 8px;
+	transition: all 0.5s ease-in-out;
+}
+
+.menu li:hover {
+	background: #e0e0e058;
+}
+
+.menu a {
+	color: #fff;
+	font-size: 16px;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.menu a span {
+	overflow: hidden;
+}
+
+.menu a i {
+	font-size: 1.2 rem;
+}
+
+.logout {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+/* **********main----body----section********* */
+.main--content {
+	position: relative;
+	background: #ebe9e9;
+	width: 100%;
+	padding: 1rem;
+}
+
+.header--wrapper {
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	flex-wrap:wrap;
+	background:#fff;
+	border-radius:10px;
+	padding:10px 2rem;
+	margin-bottom:1rem;
+}
+.header--title{
+	color:#000;
+}
+.user--info{
+	display:flex;
+	align-items:center;
+	gap:1rem;
+}
+.search--box{
+	background:rgb(237,237,237);
+	border-radius:15px;
+	color:#000;
+	display:flex;
+	align-items:center;
+	gap:5px;
+	padding:4px 12px;
+}
+.search--box input{
+	background:transparent;
+	padding:10px;
+}
+.search--box i{
+	font-size:1.2 rem;
+	cursor:pointer;
+	transition:all 0.5s ease-out;
+}
+.search--box i:hover{
+	transform:scale(1.2);
+}
+
+
+/* ------------------body----------------------- */
+
+.profile-img{
+	width: 20%;
+    height: 20%;
+    margin: auto;    
+    display: block;
+}
+.table-wrapper{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+    padding-left:15%;
+}
+.table,
+.table td,
+.table th {
+	background-color: transparent;
+	
+}
