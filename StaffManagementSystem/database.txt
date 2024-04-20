@@ -1,0 +1,247 @@
+
+-- Database-----------------------------------------------------------
+create database Managementapp;
+use Managementapp;
+select * from department;
+-- Roles----------------------------------
+  create table roles(
+    role_id int,
+    staff_position VARCHAR(100),
+    staff_year_of_experience INT,
+    salary DECIMAL(10, 2),
+    PRIMARY KEY(role_id)
+);
+
+insert into roles(role_id, staff_position, staff_year_of_experience,salary)
+VALUES
+(2318101,'DEAN',25,2000000),
+(2318102,'HOD',12,1000000),
+(2318103,'PROFFESSOR',5,120000),
+(2318104,'LECTURER',7,340000),
+(2318105,'LAB_ATTENDDER',3,140000);
+
+drop table roles;
+-- Table-----------------------------------------------------------
+
+create table department(
+department_id int,
+department_name varchar(20),
+primary key(department_id));
+
+insert into department(department_id,department_name)
+values(1001,'CSE'),
+(1002,'ECE'),
+(1003,'CIVIL');
+
+-- staff------------------------------------------------------------
+drop table staff;
+create table  staff(
+staff_id  int auto_increment,
+staff_name varchar(20),
+staff_email varchar(30),
+staff_phone_number varchar(10),
+staff_gender varchar(10),
+role_id int,
+department_id int,
+subject_id int,
+primary key(staff_id),
+foreign key(role_id) references roles(role_id),
+foreign key(subject_id) references subject(subject_id),
+foreign key(department_id) references department(department_id));
+insert into staff
+values(1,'LAYANA','layana123@gmail.com','7890123459','Female',2318101,1003,24204),
+(2,'ASHWINI','ash123@gmail.com','8790123459','Female',2318102,1002,24308),
+(3,'SHIVADARSHINI','shiv123@gmail.com','9870123459','Female',2318103,1001,24103),
+(4,'AMRUTHA','amrutha123@gmail.com','9760123459','Female',2318104,1003,24206),
+(5,'NAYANA','nayana123@gmail.com','7892341457','Female',2318104,1001,24101),
+(6,'AJAY','ajay123@gmail.com','8317123459','Male',2318105,1003,24204),
+(7,'SAGAR','sagar123@gmail.com','7563123459','Male',2318102,1001,24103),
+(8,'UDAY','uday123@gmail.com','8317439015','Male',2318103,1001,24307),
+(9,'VASU','vasu123@gmail.com','7788990123','Male',2318101,1001,24102),
+(10,'ABHISHEK','abhi123@gmail.com','7890233459','Male',2318102,1003,24205),
+(11,'ADIHITYAN','adhi123@gmail.com','7896675434','Male',2318104,1002,24309);
+
+drop table staff;
+select * from staff;
+-- Subject-------------------------------------------------------------------
+
+create table subject(
+subject_id int,
+subject_name varchar(40),
+primary key(subject_id));
+
+
+insert into subject(subject_id,subject_name)
+values(24101,'DSA'),
+(24102,'CompilerDesign'),
+(24103,'Operating_System'),
+(24204,'Civil_Engineering'),
+(24205,'Building_Material'),
+(24206,'Transportional_Engineering'),
+(24307,'DSD'),
+(24308,'Embedded_System'),
+(24309,'VLSI');
+
+select * from department;
+select * from roles;
+select * from staff;
+select*from subject;
+
+-- select * from staff where staff_id=1;
+
+-- select staff_id,staff_name,st.subject_id,subject_name
+-- from staff st join subject sub
+-- on st.subject_id=sub.subject_id
+-- where staff_id =5;
+
+-- select staff_id,staff_name,department_id,department_name
+-- from staff join department 
+-- using(department_id)
+-- where staff_id=5;
+
+-- update staff set staff_email ="layana564@gmail.com"
+-- where staff_id=1;
+-- select * from staff;
+
+-- update staff set staff_phonenumber="9061648967"
+-- where staff_id =8;
+--  select * from staff;
+ 
+--  select * from staff join subject 
+--  using(subject_id)
+--  where subject_id=24204;
+
+-- UPDATE roles SET staff_salary="500000" 
+-- WHERE role_id =(select role_id from staff where staff_id= 3);
+
+-- select staff_id,staff_name,department_id from staff join department
+-- using(department_id)
+-- where department_id =1001;
+
+-- select staff_position from staff join roles
+-- using(role_id)
+-- where staff_id=1;
+
+drop database Managementapp;
+
+-- create database staffappmanagement;
+-- use staffappmanagement;
+
+-- -- --------------Roles---------------------------
+--  create table roles(
+--     roleId int,
+--     staffPosition VARCHAR(100),
+--     staffYearOfExperience INT,
+--     salary DECIMAL(10, 2),
+--     PRIMARY KEY(roleId)
+-- );
+
+-- insert into roles(roleId, staffPosition, staffYearOfExperience, salary)
+-- VALUES
+-- (2318101,'DEAN',25,2000000),
+-- (2318102,'HOD',12,1000000),
+-- (2318103,'PROFFESSOR',5,120000),
+-- (2318104,'LECTURER',7,340000),
+-- (2318105,'LAB_ATTENDDER',3,140000);
+
+-- -- -----------------Department---------------- 
+
+-- create table department(
+-- departmentId int,
+-- departmentName varchar(20),
+-- primary key(departmentId));
+
+-- insert into department(departmentId,departmentName)
+-- values(1001,'CSE'),
+-- (1002,'ECE'),
+-- (1003,'CIVIL');
+
+
+-- -- -------------------Subject------------------------
+-- create table subject(
+-- subjectId int,
+-- subjectName varchar(40),
+-- primary key(subjectId));
+
+
+-- insert into subject(subjectId,subjectName)
+-- values(24101,'DSA'),
+-- (24102,'CompilerDesign'),
+-- (24103,'Operating_System'),
+-- (24204,'Civil_Engineering'),
+-- (24205,'Building_Material'),
+-- (24206,'Transportional_Engineering'),
+-- (24307,'DSD'),
+-- (24308,'Embedded_System'),
+-- (24309,'VLSI');
+
+
+
+-- -- -------------------staff--------------------------
+
+-- create table  staff(
+-- staffId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+-- staffName varchar(20),
+-- staffEmail varchar(30),
+-- staffPhoneNumber varchar(10),
+-- staffGender varchar(10),
+-- roleId int,
+-- departmentId int,
+-- subjectId int,
+-- foreign key(roleId) references roles(roleId),
+-- foreign key(subjectId) references subject(subjectId),
+-- foreign key(departmentId) references department(departmentId));
+
+-- insert into staff(staffId,staffName,staffEmail,staffPhoneNumber,staffGender,roleId,departmentId,subjectId)
+-- values(1,'LAYANA','layana123@gmail.com','7890123459','Female',2318101,1003,24204),
+-- (2,'ASHWINI','ash123@gmail.com','8790123459','Female',2318102,1002,24308),
+-- (3,'SHIVADARSHINI','shiv123@gmail.com','9870123459','Female',2318103,1001,24103),
+-- (4,'AMRUTHA','amrutha123@gmail.com','9760123459','Female',2318104,1003,24206),
+-- (5,'NAYANA','nayana123@gmail.com','7892341457','Female',2318104,1001,24101),
+-- (6,'AJAY','ajay123@gmail.com','8317123459','Male',2318105,1003,24204),
+-- (7,'SAGAR','sagar123@gmail.com','7563123459','Male',2318102,1001,24103),
+-- (8,'UDAY','uday123@gmail.com','8317439015','Male',2318103,1001,24307),
+-- (9,'VASU','vasu123@gmail.com','7788990123','Male',2318101,1001,24102),
+-- (10,'ABHISHEK','abhi123@gmail.com','7890233459','Male',2318102,1003,24205),
+-- (11,'ADIHITYAN','adhi123@gmail.com','7896675434','Male',2318104,1002,24309);
+
+
+-- create table logincredentials(
+-- Id int,
+-- Identity varchar(20),
+-- username varchar(20),
+-- Password varchar(30),
+-- foreign key(Id) references staff(staffId));
+
+
+
+-- drop table logincredentials;
+
+select * from department;
+-- select * from roles;
+select * from staff;
+
+-- select * from subject;
+-- select * from admin;
+
+
+
+-- ALTER TABLE staff
+-- ADD COLUMN staffId INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+create table Credentials( 
+id int auto_increment primary key, 
+staff_id int, 
+username varchar(20),
+password varchar(20), 
+role varchar(10), 
+FOREIGN KEY (staff_id) REFERENCES staff(staff_id)
+);
+drop table Credentials;
+insert into Credentials(id,staff_id,username,password,role) 
+values(0,null,"admin","admin123","admin"),
+(101,1, 'LAYANA', 'layana123', 'staff'),
+(102,2, 'ASHWINI', 'ash123', 'staff');
+
+select * from Credentials;
+select*from staff;
